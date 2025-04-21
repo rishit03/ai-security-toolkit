@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ai-security-toolkit"
-version = "1.0.0"
+version = "1.0.1"
 description = "A red-team AI security framework with adversarial attack modules"
 readme = "README.md"
 authors = [
-    { name="Neha" }
+    { name="Rishit Goel" }
 ]
 license = { text="MIT" }
 requires-python = ">=3.8"
@@ -21,9 +21,10 @@ dependencies = [
     "cleverhans"
 ]
 
-[project.urls]
-Homepage = "https://github.com/rishit03/ai-security-toolkit"
-Repository = "https://github.com/rishit03/ai-security-toolkit"
-
 [project.scripts]
-ai-toolkit = "ai_toolkit.run:main"
+ai-toolkit = "ai_security_toolkit.run:main"
+
+[project.optional-dependencies]
+tensorflow = ["tensorflow"]
+cleverhans = ["cleverhans"]
+
