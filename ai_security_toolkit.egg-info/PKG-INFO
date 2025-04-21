@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: ai-security-toolkit
-Version: 1.0.1
+Version: 1.1.1
 Summary: A red-team AI security framework with adversarial attack modules
 Author: Rishit Goel
 License: MIT
@@ -11,6 +11,10 @@ Requires-Dist: numpy
 Requires-Dist: matplotlib
 Requires-Dist: pandas
 Requires-Dist: cleverhans
+Provides-Extra: tensorflow
+Requires-Dist: tensorflow; extra == "tensorflow"
+Provides-Extra: cleverhans
+Requires-Dist: cleverhans; extra == "cleverhans"
 Dynamic: requires-python
 
 # 🛡️ AI Security Toolkit

@@ -1,21 +1,17 @@
+import tensorflow as tf
 import numpy as np
 from datetime import datetime
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.models import load_model
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from ai_security_toolkit.shared.log_utils import append_report_row, log_metrics
 
 def main():
-    try:
-        import tensorflow as tf
-        from tensorflow.keras.datasets import mnist
-        from tensorflow.keras.models import Sequential
-        from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
-        from tensorflow.keras.utils import to_categorical
-        from tensorflow.keras.models import load_model
-    except ImportError:
-        print("❌ TensorFlow not found. Run: pip install tensorflow")
-        return
     # Step 1: Load original (victim) model
     victim_model = load_model("shared/models/mnist_cnn_model.keras")
     victim_model.trainable = False

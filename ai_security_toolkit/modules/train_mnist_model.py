@@ -1,15 +1,11 @@
+import tensorflow as tf
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.utils import to_categorical
 import os
 
 def main():
-    try:
-        import tensorflow as tf
-        from tensorflow.keras.datasets import mnist
-        from tensorflow.keras.models import Sequential
-        from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
-        from tensorflow.keras.utils import to_categorical
-    except ImportError:
-        print("❌ TensorFlow not found. Run: pip install tensorflow")
-        return
     # Load and preprocess MNIST data
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
 

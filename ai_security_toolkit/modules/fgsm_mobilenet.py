@@ -1,22 +1,16 @@
+import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
+from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
+from tensorflow.keras.preprocessing import image
+from cleverhans.tf2.attacks.fast_gradient_method import fast_gradient_method
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from ai_security_toolkit.shared.log_utils import append_report_row, save_plot
 
 def main():
-
-    try:
-        import tensorflow as tf
-        from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
-        from tensorflow.keras.preprocessing import image
-        from cleverhans.tf2.attacks.fast_gradient_method import fast_gradient_method
-    except ImportError:
-        print("❌ TensorFlow not found. Run: pip install tensorflow")
-        return
-    
     # Load MobileNetV2 pretrained on ImageNet
     model = MobileNetV2(weights='imagenet')
     model.trainable = False

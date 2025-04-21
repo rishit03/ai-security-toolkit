@@ -1,7 +1,6 @@
 import importlib
 import sys
 import os
-
 import platform
 
 if platform.system() == "Windows":
@@ -32,8 +31,9 @@ def print_menu():
 def run_selected_module(choice_idx):
     try:
         label = list(available_modules.keys())[choice_idx - 1]
-        module_name = f"modules.{available_modules[label]}"
+        module_name = f"ai_security_toolkit.modules.{available_modules[label]}"
         print(f"\n🔍 Running: {label} ({module_name})...\n")
+
         mod = importlib.import_module(module_name)
 
         if hasattr(mod, "main"):
@@ -42,8 +42,11 @@ def run_selected_module(choice_idx):
             print("⚠️ No 'main()' found — running file as script...")
             exec(open(mod.__file__).read())
 
+    except ModuleNotFoundError:
+        print(f"❌ Could not find module: {module_name}")
+        print("💡 Make sure the package is installed correctly via pip.")
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"❌ Unexpected error: {e}")
 
 def main():
     while True:

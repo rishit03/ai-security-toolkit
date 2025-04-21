@@ -3,3 +3,9 @@ numpy
 matplotlib
 pandas
 cleverhans
+
+[cleverhans]
+cleverhans
+
+[tensorflow]
+tensorflow

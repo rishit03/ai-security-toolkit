@@ -1,3 +1,8 @@
+import tensorflow as tf
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.utils import to_categorical
 import numpy as np
 from datetime import datetime
 import sys
@@ -6,17 +11,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from ai_security_toolkit.shared.log_utils import append_report_row, log_metrics
 
 def main():
-
-    try:
-        import tensorflow as tf
-        from tensorflow.keras.datasets import mnist
-        from tensorflow.keras.models import Sequential
-        from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
-        from tensorflow.keras.utils import to_categorical
-    except ImportError:
-        print("❌ TensorFlow not found. Run: pip install tensorflow")
-        return
-    
     # Build a simple CNN
     def build_model():
         model = Sequential([

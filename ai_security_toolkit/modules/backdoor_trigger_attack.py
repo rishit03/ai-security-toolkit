@@ -1,5 +1,10 @@
+import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.utils import to_categorical
 import os
 import random
 from datetime import datetime
@@ -9,17 +14,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from ai_security_toolkit.shared.log_utils import append_report_row, save_plot
 
 def main():
-
-    try:
-        import tensorflow as tf
-        from tensorflow.keras.datasets import mnist
-        from tensorflow.keras.models import Sequential
-        from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
-        from tensorflow.keras.utils import to_categorical
-    except ImportError:
-        print("❌ TensorFlow not found. Run: pip install tensorflow")
-        return
-    
     # Parameters
     trigger_label_target = 7
     trigger_class_source = 1

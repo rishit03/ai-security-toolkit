@@ -1,3 +1,4 @@
+import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
@@ -7,13 +8,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from ai_security_toolkit.shared.log_utils import save_plot, append_report_row, log_metrics
 
 def main():
-
-    try:
-        import tensorflow as tf
-    except ImportError:
-        print("❌ TensorFlow not found. Run: pip install tensorflow")
-        return
-    
     # Load model
     model = tf.keras.models.load_model("shared/models/mnist_cnn_model.keras")
     print("✅ Loaded model from .keras file.")
